@@ -2,11 +2,12 @@ import textField from "../ui/textField";
 
 export default function renderLogin() {
     return(
-        <textField 
+        <textField
         label = "Email"
-        icon = "email"
+        icon = "email" />
+
         
-       >
-        </textField>
+       
+        
     )
 } 
