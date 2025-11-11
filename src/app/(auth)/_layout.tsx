@@ -12,4 +12,14 @@ Stak Navigator
         back(); //Função "contraria à push" volta para a tela enterior, seguindo a ordem de empilhamento. 
         replace(); // substitui uma tela por outra. Está substituição retira uma tela do empilhamento e substitui, após a execução do replace se torna impossivel voltar para a tela substituida
     }
-*/ 
+*/
+import { Stack } from "expo-router";
+
+export default function AuthLayout(){
+
+    return (
+        <Stack screenOptions={{headerShown: false}}>
+            <Stack.Screen name = "index" options = {{title: "Login"}}/>
+        </Stack>
+    )
+}

@@ -1,6 +1,6 @@
-import {View, Text, TextInput, TextInputProps } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
+import { MaterialIcons } from "@expo/vector-icons";
+import {View, Text, TextInput, TextInputProps } from "react-native";
 
 type Props = TextInputProps & {
     label: string;
@@ -8,7 +8,7 @@ type Props = TextInputProps & {
     icon?: keyof typeof MaterialIcons.glyphMap;
 }
 
-export default function textField({label, errorText, icon} : Props){
+export function textField({label, errorText, icon} : Props){
     return(
         <View>
             <Text> {label}</Text>
@@ -18,7 +18,12 @@ export default function textField({label, errorText, icon} : Props){
                         <MaterialIcons name={icon} size={18} color="yellow"/>
                     </View>
                 )}
-                <TextInput value="Isso é um teste"/>
+                <TextInput 
+                value="{value}"
+                onChange={"setValue"}
+                placeholder="email@email.com"
+                />
+            
             </View>
 
         </View>

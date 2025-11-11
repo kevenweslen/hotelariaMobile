@@ -16,7 +16,7 @@ export const global = StyleSheet.create({
     container: {
         paddingHorizontal:width * 0.07,
         paddingVertical: height * 0.07,
-        backgroundColor: "#fff"
+        backgroundColor: "#1e6807ff"
 /*#5a1cebff*/
 
     },
