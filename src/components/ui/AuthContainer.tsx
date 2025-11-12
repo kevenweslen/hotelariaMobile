@@ -11,8 +11,8 @@ type Props = {
     icon? : keyof typeof FontAwesome.glyphMap;
     children : React.ReactNode;
 }
+const AuthContainer = ({title, subtitle, icon, children}:  Props) => {
 
-export function AuthContainer({title, subtitle, icon, children}:  Props){
     return (
         <SafeAreaView style ={global.safeArea}>
             <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={global.keyBoardAvoiding}>
@@ -30,3 +30,5 @@ export function AuthContainer({title, subtitle, icon, children}:  Props){
         </SafeAreaView>
     );
 }
+export default AuthContainer;
+

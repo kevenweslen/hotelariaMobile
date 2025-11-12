@@ -1,4 +1,4 @@
-import { RenderLogin } from "@/components/login";
+import RenderLogin from "@/components/login";
 
 export default function Login(){
     return (
