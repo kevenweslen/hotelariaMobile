@@ -18,10 +18,10 @@ export const global = StyleSheet.create({
         paddingVertical: height * 0.07,
         backgroundColor: "#1e6807ff"
         */
-    backgroundColor: "#1e6807ff",
+    backgroundColor: "#4169E1",
     padding: 20,
     borderWidth: 2,
-    borderColor: "#1e6f5c",
+    borderColor: "#4169e18a",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.2,
@@ -58,14 +58,11 @@ export const global = StyleSheet.create({
     },
 
     subTitle: {
-    fontSize: 20,
-    color: "#b61a9cff", // Amarelo
+    fontSize: 15,
+    color: "#000", 
     fontWeight: "900",
     marginTop: 8,
-    textShadowColor: 'rgba(113, 38, 38, 0.1)',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 2,
-
+    marginBottom: 8,   
     },
     //imputs
     inputGroup: {
@@ -82,12 +79,11 @@ export const global = StyleSheet.create({
     },
 
     inputIcon: {
-        borderWidth: 1,
         paddingLeft: width * 0.02,
         paddingRight: width * 0.02,
         flexDirection: "row",
         alignItems: "center",
-        backgroundColor: "#ffe6002c",
+        backgroundColor: "#fff",
         borderWidth: 2,
         borderColor: "#000000ad",
         borderRadius: 10,
@@ -111,5 +107,28 @@ export const global = StyleSheet.create({
         color: "#ff0000ff",
         fontSize: 14,
         marginRight: width * 0.01,
+    },
+
+    eyeIcon:{
+        position: "absolute",
+        right: 12,
+        top: 42
+    },
+
+    primaryButton: {
+        backgroundColor: "#4169E1",
+        borderRadius: 10,
+        padding: 10,
+        alignItems: "center",
+    },
+
+        primaryButtonDesabled: {
+        backgroundColor: "#5b6ea8ff",
+        borderRadius: 10,
+        padding: 10,
+        alignItems: "center",
+    },
+    primaryButtonText:{
+        color: "#ffffff"
     },
 });
