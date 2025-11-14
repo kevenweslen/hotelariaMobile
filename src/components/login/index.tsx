@@ -14,15 +14,16 @@ const RenderLogin = () => {
                 icon="hotel">
             
             <TextField  
+                
                 label="Email"
                 icon="email"
                 placeholder="name@Email.com">
+                
             </TextField>
             <PasswordField
-            label="Senha"
+            label="Password"
             icon="lock"
             placeholder="*********"
-            
             />
             <TouchableOpacity style={[global.primaryButton]}>
                 <Text style={global.primaryButtonText}>Entrar</Text>

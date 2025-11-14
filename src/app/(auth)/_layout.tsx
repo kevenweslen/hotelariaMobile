@@ -23,4 +23,18 @@ const AuthLayout = () => {
         </Stack>
     )
 }
+const RegisterLayut = () => {
+
+    return (
+        <Stack screenOptions={{headerShown: true}}>
+            <Stack.Screen name = "index" options = {{title: "Register"}}/>
+        </Stack>
+    )
+}
+
 export default AuthLayout;
+
+            // <TouchableOpacity style={styles.backToLogin} onPress={() => router.back()}>
+            //   <Ionicons name="arrow-back" size={16} color="#111827" />
+            //   <Text style={styles.backToLoginText}>Voltar para login</Text>
+            // </TouchableOpacity>

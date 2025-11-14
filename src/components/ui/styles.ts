@@ -12,43 +12,32 @@ export const global = StyleSheet.create({
         flex: 1
 
     },
+    ImageBackground:{
+        flex: 1,
+    },
 
     container: {
-       /* paddingHorizontal:width * 0.07,
-        paddingVertical: height * 0.07,
-        backgroundColor: "#1e6807ff"
-        */
-    backgroundColor: "#4169E1",
+    paddingHorizontal:width * 0.07,
+    paddingVertical: height * 0.07,    
     padding: 20,
     borderWidth: 2,
-    borderColor: "#4169e18a",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.2,
-    shadowRadius: 16,
-    elevation: 10,
     },
 
     header: {
-        backgroundColor: "#ffffffff",
         alignItems: "center",
-        marginBottom: height * 0.07,
+        marginBottom: height * 0.05,
         borderRadius: 10,
-        shadowColor: "#000",
-        shadowOpacity: 1,
-        shadowRadius: 10,
-        elevation: 10
-
     },
 
     content: {
-        backgroundColor: "#fff",
+        // alignItems: "center",
         borderRadius: 10,
         padding: width*  0.03,
-        shadowColor: "#000",
-        shadowOpacity: 1,
-        shadowRadius: 10,
-        elevation: 10
+        borderColor: "#000",
+        elevation: 5,
+        marginLeft: 30,
+        width: 250,
+        height:170,
     },
 
     title: {
@@ -61,8 +50,7 @@ export const global = StyleSheet.create({
     fontSize: 15,
     color: "#000", 
     fontWeight: "900",
-    marginTop: 8,
-    marginBottom: 8,   
+  
     },
     //imputs
     inputGroup: {
@@ -73,9 +61,8 @@ export const global = StyleSheet.create({
     label: {
         fontSize: 17,
         fontWeight: "600",
-        color: "#000000ff",
-        marginBottom: height * 0.01
-
+        color: "#ffffffff",
+        // marginBottom: height * 0.01,
     },
 
     inputIcon: {
@@ -120,6 +107,7 @@ export const global = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
         alignItems: "center",
+        marginTop: 110,
     },
 
         primaryButtonDesabled: {
@@ -127,6 +115,7 @@ export const global = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
         alignItems: "center",
+        marginTop: 100,
     },
     primaryButtonText:{
         color: "#ffffff"
