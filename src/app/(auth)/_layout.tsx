@@ -23,14 +23,6 @@ const AuthLayout = () => {
         </Stack>
     )
 }
-const RegisterLayut = () => {
-
-    return (
-        <Stack screenOptions={{headerShown: true}}>
-            <Stack.Screen name = "index" options = {{title: "Register"}}/>
-        </Stack>
-    )
-}
 
 export default AuthLayout;
 

@@ -17,7 +17,7 @@ const PasswordField =(props: Props) => {
         autoCorrect={false}
         />
         <TouchableOpacity style={global.eyeIcon} onPress={() =>setShow ((showTrue) => !showTrue)}>
-        <Ionicons name={show ? "eye-outline" : "eye-off-outline" } size={23} color="#4169e18a"/>
+        <Ionicons name={show ? "eye-outline" : "eye-off-outline" } size={23} color="#0000008a"/>
         </TouchableOpacity>
     </View>
     
