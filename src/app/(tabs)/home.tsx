@@ -1,16 +1,8 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ResetPassword from "@/components/resetPassword";
+import RenderHome from "@/components/home";
 
-const Register = () =>{
+const Home = () => {
     return (
-        <ResetPassword/>
+        <RenderHome/>
     )
 } 
-export default Register;
-
-// const MyTabs = createBottomTabNavigator({
-//   screens: {
-//     Home: HomeScreen,
-//     Profile: ProfileScreen,
-//   },
-// });
+export default Home;

@@ -1,15 +1,7 @@
 import { FontAwesome6, Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
-import {
-  Dimensions,
-  ImageBackground,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
+import {Dimensions, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableOpacity, View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { global } from "./styles";
@@ -27,10 +19,6 @@ const AuthContainer = ({ title, subtitle, iconReturn, icon, children}: Props) =>
 
   return (
     <SafeAreaView style={global.safeArea}>
-      <ImageBackground
-        source={require("../Image/mala.png")}
-        style={global.ImageBackground}
-      >
         <ScrollView>
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -69,7 +57,6 @@ const AuthContainer = ({ title, subtitle, iconReturn, icon, children}: Props) =>
             <View style={global.content}>{children}</View>
           </KeyboardAvoidingView>
         </ScrollView>
-      </ImageBackground>
     </SafeAreaView>
   );
 };
