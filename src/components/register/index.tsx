@@ -16,6 +16,7 @@ const RenderRegister = () => {
       subtitle="Cadastre-se para continuar."
       icon="person"
     >
+
       <TextField label="Nome" placeholder="Digite seu nome"></TextField>
 
       <TextField label="CPF" placeholder="000.000.000-00"></TextField>

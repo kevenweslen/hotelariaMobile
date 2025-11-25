@@ -11,9 +11,6 @@ export const global = StyleSheet.create({
     flex: 1,
 
   },
-  ImageBackground: {
-    flex: 1,
-  },
 
   container: {
     marginTop: height * 0.07
@@ -92,7 +89,7 @@ export const global = StyleSheet.create({
   },
 
   primaryButton: {
-    backgroundColor: "#4169E1",
+    backgroundColor: "#8f6510ff",
     borderRadius: 10,
     padding: 10,
     alignItems: "center",
@@ -101,7 +98,7 @@ export const global = StyleSheet.create({
   },
 
   primaryButtonDesabled: {
-    backgroundColor: "#5b6ea8ff",
+    backgroundColor: "rgba(91, 110, 168, 0.43)",
     borderRadius: 10,
     padding: 10,
     alignItems: "center",

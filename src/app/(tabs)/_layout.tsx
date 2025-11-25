@@ -11,8 +11,11 @@ import { Stack, Tabs } from "expo-router";
 
 const homeLayout = () => {
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Tabs screenOptions={{ tabBarActiveTintColor: "black" }}>
+      <Tabs screenOptions={{ tabBarActiveTintColor: "black",
+                            tabBarInactiveTintColor: "gray",
+                            headerShown: false,
+
+       }}>
         <Tabs.Screen
           name="reservations"
           options={{
@@ -43,7 +46,6 @@ const homeLayout = () => {
           }}
         />
       </Tabs>
-    </Stack>
   );
 };
 

@@ -1,19 +1,20 @@
 import { FontAwesome6, Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
-import {Dimensions, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableOpacity, View,
-} from "react-native";
+import { Dimensions, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { global } from "./styles";
 
 type Props = {
-  title: String;
+  title?: String;
   subtitle?: String;
   iconReturn?: keyof typeof Ionicons.glyphMap;
   icon?: keyof typeof FontAwesome6.glyphMap;
+  bgImage?: React.ReactNode;
   children: React.ReactNode;
+ 
 };
-const AuthContainer = ({ title, subtitle, iconReturn, icon, children}: Props) => {
+const AuthContainer = ({ title, subtitle, iconReturn, icon, bgImage, children}: Props) => {
   const { width, height} = Dimensions.get("window");
   const router = useRouter();
 
@@ -42,6 +43,7 @@ const AuthContainer = ({ title, subtitle, iconReturn, icon, children}: Props) =>
                 </TouchableOpacity>
               )}
               <View style={global.header}>
+                {!!title && <Text style={global.title}>{title}</Text>}
                 {!!subtitle && (
                   <FontAwesome6
                     name={icon}
@@ -50,11 +52,10 @@ const AuthContainer = ({ title, subtitle, iconReturn, icon, children}: Props) =>
                     marginTop={10}
                   />
                 )}
-                <Text style={global.title}>{title}</Text>
                 {!!subtitle && <Text style={global.subTitle}>{subtitle}</Text>}
               </View>
             </View>
-            <View style={global.content}>{children}</View>
+            <View>{children}</View>
           </KeyboardAvoidingView>
         </ScrollView>
     </SafeAreaView>
