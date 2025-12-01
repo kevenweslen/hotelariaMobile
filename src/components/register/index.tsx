@@ -25,15 +25,15 @@ const RenderRegister = () => {
 
       <TextField
         label="Email"
-        icon="email"
+        icon={{ lib: "FontAwesome5", name: "email"}}
         placeholder="name@Email.com"
       ></TextField>
 
-      <PasswordField label="Senha" icon="lock" placeholder="*********" />
+      <PasswordField label="Senha" icon={{ lib: "FontAwesome5", name: "lock-outline" }} placeholder="*********" />
 
       <PasswordField
         label="Confirme sua senha"
-        icon="lock"
+        icon={{ lib: "FontAwesome5", name: "lock-outline" }}
         placeholder="*********"
       />
 

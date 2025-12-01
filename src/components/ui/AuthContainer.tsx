@@ -1,7 +1,7 @@
-import { FontAwesome6, Ionicons } from "@expo/vector-icons";
+import { FontAwesome6, FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
-import { Dimensions, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { global } from "./styles";
 
@@ -14,6 +14,7 @@ type Props = {
   children: React.ReactNode;
  
 };
+
 const AuthContainer = ({ title, subtitle, iconReturn, icon, bgImage, children}: Props) => {
   const { width, height} = Dimensions.get("window");
   const router = useRouter();
@@ -61,4 +62,5 @@ const AuthContainer = ({ title, subtitle, iconReturn, icon, bgImage, children}: 
     </SafeAreaView>
   );
 };
+
 export default AuthContainer;

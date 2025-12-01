@@ -1,42 +1,39 @@
-import DatePicker, {getToday, getFormatedDate} from 'react-native-modern-datepicker';
+import { Dimensions, View } from "react-native";
+import DatePicker, { getToday } from "react-native-modern-datepicker";
 import { useState } from "react";
-import { View, Text } from "react-native";
-
 type Props = {
-    label?: string;
+  onSelectDate: (date: string) => void;
 };
-const dateSelector = ({label} : Props) => {
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() +1);
-    const startDate = getFormatedDate(tomorrow, "YYY/MMM/DD h:m")
-    getToday();
-    getFormatedDate(new Date(), "YYY/MMM/DD h:m");
-    const [selectDate, setSelectDate] = useState("");
-
-    return (
-        <View>
-            {!!label && <Text>{label}</Text>}
-        
-            <DatePicker 
-                mode='calendar'
-                options={{
-                    backgroundColor: '#090C08',
-                    textHeaderColor: '#FFA25B',
-                    textDefaultColor: '#F6E7C1',
-                    selectedTextColor: '#fff',
-                    mainColor: '#F4722B',
-                    textSecondaryColor: '#D6C7A1',
-                    borderColor: 'rgba(122, 146, 165, 0.1)',
-                }}
-                style={{borderRadius: 15}}
-                isGregorian={true}
-                minimumDate={startDate}
-                selected={selectDate}
-                onSelectedChange={setSelectDate}
-            />
-        </View>
-    );
+const dateSelector = ({onSelectDate} : Props) => {
+  const { width, height } = Dimensions.get("window"); //Componente para dimensionar largura e altura (responsividade)
+  const today = getToday();
+  const [selectDate, setSelectedDate] = useState ("");
+  return (
+    <View>
+      <DatePicker
+        mode="calendar"
+        options={{
+          backgroundColor: "#99630034", //Fundo (background)
+          textHeaderColor: "#996300d5", //Mês
+          textDefaultColor: "#6dac0eff", //Número (data)
+          selectedTextColor: "#996300d5", //Cor do número (data) quando selecionado
+          mainColor: "#6dac0eff", //Setas laterais e seletor
+          textSecondaryColor: "#996300d5", //Dia da semana
+          borderColor: "#6dac0eff", //Borda
+          textFontSize: 14, //Tamanho da fonte (dias da semana e número -> data)
+          textHeaderFontSize: 15, //Tamanho da fonte (mês)
+          
+        }}
+        style={{borderRadius:15, width: width * 0.65, height: "auto"}}
+          isGregorian={true}
+          minimumDate={today}
+          selected={selectDate}
+          onSelectedChange={(date)=> {
+          setSelectedDate(date);
+          onSelectDate(date)
+        }}
+      />
+    </View>
+  );
 };
-
 export default dateSelector;

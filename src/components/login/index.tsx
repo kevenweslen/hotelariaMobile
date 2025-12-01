@@ -1,19 +1,22 @@
 import { useRouter } from "expo-router";
 import {
   Dimensions,
-  ImageBackground,
+  Image,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import AuthContainer from "../ui/AuthContainer";
 import PasswordField from "../ui/PasswordField";
 import { global } from "../ui/styles";
 import TextField from "../ui/textField";
+import { ImageBackground } from "react-native";
 
 const RenderLogin = () => {
   const router = useRouter();
   const { height } = Dimensions.get("window");
+  const image = {uri: '../../src\image'};
+
 
   return (
     <AuthContainer
@@ -21,14 +24,16 @@ const RenderLogin = () => {
       subtitle="Faça seu login para continuar"
       icon="hotel"
     >
+      
+      
       <View style={global.content}>
         <TextField
           label="Email"
-          icon="email"
+          icon={{ lib: "MaterialIcons", name: "email" }}
           placeholder="name@Email.com"
         ></TextField>
 
-        <PasswordField label="Senha" icon="lock" placeholder="*********" />
+        <PasswordField label="Senha" icon={{ lib: "FontAwesome5", name: "lock" }} placeholder="*********" />
 
         <View style={{ alignItems: "center" }}>
           <TouchableOpacity
@@ -66,6 +71,7 @@ const RenderLogin = () => {
             </Text>
           </TouchableOpacity>
         </View>
+        
       </View>
     </AuthContainer>
   );
