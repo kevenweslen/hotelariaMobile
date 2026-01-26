@@ -41,14 +41,14 @@ export const global = StyleSheet.create({
   },
   //imputs
   inputGroup: {
-    backgroundColor: "#00000027",
+  
     width: width * 0.8,
   },
 
   label: {
     fontSize: 17,
     fontWeight: "600",
-    color: "#ffffffff",
+    color: "rgb(0, 0, 0)",
     marginBottom: height * 0.01,
   },
 
@@ -94,11 +94,11 @@ export const global = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     marginTop: height * 0.02,
-    width: width * 0.8,
+    width: width * 0.8, 
   },
 
   primaryButtonDesabled: {
-    backgroundColor: "rgba(91, 110, 168, 0.43)",
+    backgroundColor: "rgba(60, 77, 128, 0.43)",
     borderRadius: 10,
     padding: 10,
     alignItems: "center",

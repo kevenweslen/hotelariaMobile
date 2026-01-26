@@ -1,20 +1,23 @@
 import { FontAwesome5, FontAwesome6, MaterialIcons } from "@expo/vector-icons";
-import { StyleSheet, Text, View } from "react-native";
+import {Dimensions, Image, ImageSourcePropType, StyleSheet, Text, View} from "react-native";
+import { global } from "./styles";
+
 type Infos = { title?: string; text: string; price: number};
 type NameIcon =
   | { lib: "MaterialIcons"; name: keyof typeof MaterialIcons.glyphMap }
   | { lib: "FontAwesome6"; name: keyof typeof FontAwesome6.glyphMap }
   | { lib: "FontAwesome5"; name: keyof typeof FontAwesome5.glyphMap };
 type Props = {
-  image?: React.ImgHTMLAttributes<HTMLImageElement>['src'];
+  image?: ImageSourcePropType;
   label?: string;
   description?: Infos;
   icon?: NameIcon;
 };
+const { width, height } = Dimensions.get("window");
 const RoomCard = ({ label, description, icon }: Props) => {
   return (
-    <View>
-      <View></View>
+    <View style={global.content}>
+      <View><Image style={styles.image}resizeMode="cover"/></View>
       <View>
         {!!label && <Text>{label}</Text>}
         <View>
@@ -39,9 +42,9 @@ const RoomCard = ({ label, description, icon }: Props) => {
               <View>
                   <View style={styles.description}>
                     {!! description.title && <Text>{description.title}</Text>}
-                    <Text>  {description.text}</Text>
-                    <Text>R$: {description.price}</Text>
                   </View>
+                  
+
               </View>
             )}
           </View>
@@ -53,10 +56,38 @@ const RoomCard = ({ label, description, icon }: Props) => {
 };
 
 const styles = StyleSheet.create({
-    description: {
-        backgroundColor: "#9963003a",
-        borderRadius: 10,
-    }
+  image: {
+    height: height * 0.27,
+    width: "auto",
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    elevation: 2,
+  },
+  container: {
+    padding: width * 0.02,
+    marginTop: height * 0.02,
+    backgroundColor: "#f6ecffff",
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    elevation: 2,
+  },
+  description: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 15,
+  },
+  price: {
+    fontSize: 17,
+    fontWeight: 600,
+    color: "purple"
+  }
 });
 
 export default RoomCard;
