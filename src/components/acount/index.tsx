@@ -5,7 +5,7 @@ import { global } from "../ui/styles";
 const RenderAcount = () => {
   return (
       <AuthContainer title="Acount">
-        <Text>Informações da sua conta</Text>
+        <Text> <h1>Informações da sua conta</h1></Text>
       </AuthContainer>
   );
 };
