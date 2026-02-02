@@ -5,15 +5,16 @@ import TextField from "./textField";
 import { global } from "./styles";
 
 type Props = React.ComponentProps<typeof TextField>;
-const PasswordField =(props: Props) => {
+
+const PasswordField =(resInpuitProps: Props) => {
     const [show, setShow] = useState(false);
+    /*React.useState */
 
     return (
     <View>
         <TextField
-        {...props}
+        {...resInpuitProps}
         secureTextEntry={!show}
-        autoCapitalize="none"
         autoCorrect={false}
         />
         <TouchableOpacity style={global.eyeIcon} onPress={() =>setShow ((showTrue) => !showTrue)}>

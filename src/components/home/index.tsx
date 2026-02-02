@@ -13,6 +13,8 @@ import InputSpin from "../ui/InputSpin";
 import RoomCart from "../ui/roomCart";
 import { global } from "../ui/styles";
 import TextField from "../ui/textField";
+
+
 const RenderHome = () => {
   const { width, height } = Dimensions.get("window"); //Utilizarei as dimensões
   //useState() para gerenciar e alterar os estados

@@ -89,7 +89,7 @@ export const global = StyleSheet.create({
   },
 
   primaryButton: {
-    backgroundColor: "#8f6510ff",
+    backgroundColor: "rgb(219, 152, 19)",
     borderRadius: 10,
     padding: 10,
     alignItems: "center",
