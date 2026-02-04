@@ -13,12 +13,12 @@ const dateSelector = ({ onSelectDate }: Props) => {
       <DatePicker
         mode="calendar"
         options={{
-          backgroundColor: "#9963008c", //Fundo (background)
-          textHeaderColor: "#996300d5", //Mês
+          backgroundColor: "#ffffff", //Fundo (background)
+          textHeaderColor: "#d8a340", //Mês
           textDefaultColor: "rgb(13, 20, 1)", //Número (data)
-          selectedTextColor: "#996300ef", //Cor do número (data) quando selecionado
+          selectedTextColor: "#d8a340", //Cor do número (data) quando selecionado
           mainColor: "rgb(0, 0, 0)", //Setas laterais e seletor
-          textSecondaryColor: "#996300d5", //Dia da semana
+          textSecondaryColor: "#d8a340", //Dia da semana
           borderColor: "rgb(0, 0, 0)", //Borda
           textFontSize: 14, //Tamanho da fonte (dias da semana e número -> data)
           textHeaderFontSize: 15, //Tamanho da fonte (mês)

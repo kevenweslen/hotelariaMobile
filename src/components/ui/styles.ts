@@ -9,24 +9,21 @@ export const global = StyleSheet.create({
 
   keyBoardAvoiding: {
     flex: 1,
-
   },
 
   container: {
-    marginTop: height * 0.07
+    marginTop: height * 0.07,
   },
 
   header: {
     alignItems: "center",
     borderRadius: 10,
-    marginBottom: height * 0.04
+    marginBottom: height * 0.04,
   },
 
   content: {
-    
     borderRadius: 10,
     alignItems: "center",
-    
   },
 
   title: {
@@ -41,7 +38,6 @@ export const global = StyleSheet.create({
   },
   //imputs
   inputGroup: {
-  
     width: width * 0.8,
   },
 
@@ -55,7 +51,7 @@ export const global = StyleSheet.create({
   inputIcon: {
     paddingLeft: width * 0.02,
     paddingRight: width * 0.02,
-    flexDirection: "row",
+    flexDirection: "row-reverse",
     alignItems: "center",
     backgroundColor: "#fff",
     borderWidth: 2,
@@ -73,7 +69,6 @@ export const global = StyleSheet.create({
     fontSize: 16,
     color: "black",
     fontWeight: "600",
-    
   },
 
   errorText: {
@@ -94,7 +89,7 @@ export const global = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     marginTop: height * 0.02,
-    width: width * 0.8, 
+    width: width * 0.8,
   },
 
   primaryButtonDesabled: {
@@ -107,5 +102,4 @@ export const global = StyleSheet.create({
   primaryButtonText: {
     color: "#ffffff",
   },
-
 });

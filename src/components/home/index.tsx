@@ -13,7 +13,7 @@ import InputSpin from "../ui/InputSpin";
 import RoomCart from "../ui/roomCart";
 import { global } from "../ui/styles";
 import TextField from "../ui/textField";
-
+import componenteModal from "../ui/modal";
 
 const RenderHome = () => {
   const { width, height } = Dimensions.get("window"); //Utilizarei as dimensões
@@ -27,30 +27,40 @@ const RenderHome = () => {
   return (
     <AuthContainer>
       {/*children */}
-      <View>
+      <View style={{ display: "flex", alignItems: "center" }}>
+        {""}
         {/*Essa View vocês tinham e eu só estilizei*/}
-        <View style={{ display: "flex", alignItems: "center" }}>
+        <View style={{ flexDirection: "row" }}>
+          {""}
           {/*Criei esta nova View para check-in*/}
           {/* Input de checkIn para abrir calendário*/}
           <TouchableOpacity onPress={() => setCalendar("checkin")}>
-            <View>
+            <View style={{ width: width * 0.8 }}>
+              {""}
               {/* Nova view para dar largura ao TextField */}
               <TextField
                 label="Check-in"
                 icon={{ lib: "FontAwesome5", name: "calendar-alt" }}
                 placeholder="Selecione a data"
                 value={checkIn}
+                style={{
+                  width: width * 0.4,
+                }}
               />
             </View>
+            {""}
             {/* Fecha aqui */}
           </TouchableOpacity>
         </View>
+        {""}
         {/*View de check-in fecha aqui */}
         <View style={{ display: "flex", alignItems: "center" }}>
+          {""}
           {/*Criei esta nova View para check-out*/}
           {/* Input de checkIn para abrir calendário*/}
           <TouchableOpacity onPress={() => setCalendar("checkout")}>
-            <View style={{}}>
+            <View style={{ width: width * 0.8 }}>
+              {""}
               {/* Nova view para dar largura ao TextField */}
               <TextField
                 label="Check-out"
@@ -59,11 +69,11 @@ const RenderHome = () => {
                 value={checkOut}
               />
             </View>
+            {""}
             {/* Fecha aqui */}
           </TouchableOpacity>
         </View>
         {/*View do check-out que fecha aqui */}
-
         {/*Modal para fechar ao clique fora*/}
         <Modal
           transparent
@@ -72,15 +82,22 @@ const RenderHome = () => {
           onRequestClose={closeCalendar}
         >
           {/*BackDrop: qualquer clique fora fecha a janela */}
-          <Pressable 
-          style={{flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#00000049"}}
-          onPress={closeCalendar}>
+          <Pressable
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "#00000049",
+            }}
+            onPress={closeCalendar}
+          >
+            {/*Área do calendario: áo clique não fecha */}
             <Pressable onPress={() => {}}>
-              {/*Área do calendario: áo clique não fecha */}
               {/* <DateSelector /> */}
               {calendar === "checkin" && (
                 <DateSelector
                   onSelectDate={(date) => {
+                    setCheckIn(date);
                     closeCalendar();
                   }}
                 />
@@ -90,6 +107,7 @@ const RenderHome = () => {
               {calendar === "checkout" && (
                 <DateSelector
                   onSelectDate={(date) => {
+                    setCheckOut(date);
                     closeCalendar();
                   }}
                 />
@@ -97,7 +115,14 @@ const RenderHome = () => {
             </Pressable>
           </Pressable>
         </Modal>
-        <View>
+        {/*InputSpin */}
+        <View
+          style={{
+            borderColor: "#000",
+            alignItems: "center",
+            marginBottom: 12,
+          }}
+        >
           <Text style={global.label}>Quantidade de hóspedis</Text>
           <InputSpin
             guests={qntGuests}
@@ -111,19 +136,30 @@ const RenderHome = () => {
           {/*input para adicionar quantidade de clientes*/}
         </View>
       </View>
-      <RoomCart
-        image={require("../../../assets/image/malaClosed.png")}
-        label="Apartamento"
-        icon={{
-          lib: "FontAwesome5",
-          name: "bed",
-        }}
-        description={{
-          title: "Descrição do Quarto",
-          text: "1 cama de casal \n1 cama de solteiro",
-          price: 180.9,
-        }}
-      />
+      
+      <TouchableOpacity onPress={() => setIsModalVisible(true)}>
+        <View
+          style={{
+            borderColor: "black",
+            shadowColor: "black",
+            shadowOpacity: 2,
+            alignItems: "center",
+          }}
+        >
+          onPress={() => setIsModalVisible(true)
+          <RoomCart
+            image={require("../../../assets/image/quarto-solteiro.jpg")}
+            label="Quarto Luxo"
+            description={{
+              title: "Detalhes do quarto",
+              text: "Cama King Size, Vista para o mar",
+              price: 250,
+            }}
+            icon={{ lib: "FontAwesome5", name: "bed" }}
+          />
+
+        </View>
+      </TouchableOpacity>
     </AuthContainer>
   );
 };

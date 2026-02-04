@@ -14,7 +14,6 @@ import TextField from "../ui/textField";
 const RenderAcount = () => {
   const { width, height } = Dimensions.get("window"); //Utilizarei as dimensões
 
-  const [oldPassword, setOldPassword] = useState("");
   const [newPassword1, setNewPassword1] = useState("");
   const [newPassword2, setNewPassword2] = useState("");
   const [alterPass, setAltertPass] = useState<
@@ -25,17 +24,13 @@ const RenderAcount = () => {
   return (
     <AuthContainer title="Perfil">
       <View style={global.content}>
-        <TextField label="nome de usuário" placeholder="Nome" readOnly />
+        <TextField label="nome de usuário" />
 
-        <TextField label="cpf do usuário" placeholder="cpf" readOnly />
+        <TextField label="cpf do usuário" placeholder="cpf" />
 
-        <TextField
-          label="telefone do usuário"
-          placeholder="telefone"
-          readOnly
-        />
+        <TextField label="telefone do usuário" placeholder="telefone" />
 
-        <TextField label="email do usuário" placeholder="email" readOnly />
+        <TextField label="email do usuário" placeholder="email" />
       </View>
       <View style={{ alignContent: "center", alignItems: "center" }}>
         <TouchableOpacity onPress={() => setAltertPass("alterPass")}>
@@ -43,8 +38,9 @@ const RenderAcount = () => {
             <TextField
               label="Senha do usuário"
               icon={{ lib: "FontAwesome5", name: "pencil-alt" }}
+              // iconPosition="right" // ← Adicione esta propriedade se existir
               placeholder="Senha"
-              value={String(alterPass)}
+              // value={String(alterPass)}
             />
           </View>
         </TouchableOpacity>
@@ -92,12 +88,16 @@ const RenderAcount = () => {
                 label="senha nova"
                 placeholder="******"
                 value={newPassword1}
+                onChangeText={setNewPassword1}
+                secureTextEntry={true} // Recomendado para campos de senha
               />
 
               <TextField
                 label="confirma a sua nova senha"
                 placeholder="******"
                 value={newPassword2}
+                onChangeText={setNewPassword2}
+                secureTextEntry={true} // Recomendado para campos de senha
               />
               <View>
                 <TouchableOpacity
@@ -113,30 +113,31 @@ const RenderAcount = () => {
                     }
                   }}
                   style={{
-                    flex: 1,
-                    padding: 12,
-                    backgroundColor: "#ffd700",
-                    width: width * 0.21,
+                    borderColor: "#000",
+                    backgroundColor: "#d8a340",
+                    flexDirection: "row",
+                    borderRadius: 10,
+                    padding: 10,
+                    gap: height * 0.1,
                   }}
                 >
-                  <Text style={{ color: "#000000", fontWeight: "500" }}>
-                    confirmar
+                  <Text style={{ color: "#000000", fontWeight: "700" }}>
+                    Confirmar
                   </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                   onPress={closeAlterPass}
                   style={{
-                    flex: 1,
-                    padding: 12,
-                    backgroundColor: "#f0f0f0",
-                    borderRadius: 8,
-                    width: width * 0.09,
-                    height: height * 0.4,
-                    alignItems: "center",
+                    borderColor: "#000",
+                    backgroundColor: "#d8a340",
+                    flexDirection: "row",
+                    borderRadius: 10,
+                    padding: 10,
+                    gap: height * 0.1,
                   }}
                 >
-                  <Text style={{ color: "#000000", fontWeight: "500" }}>
+                  <Text style={{ color: "#000000", fontWeight: "700" }}>
                     Cancelar
                   </Text>
                 </TouchableOpacity>
