@@ -1,15 +1,16 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 import {
-  Modal as RNModal,
-  Pressable,
-  View,
-  StyleSheet,
   Dimensions,
-  ViewStyle,
+  ImageSourcePropType,
+  Pressable,
+  Modal as RNModal,
   ModalProps as RNModalProps,
-} from 'react-native';
+  StyleSheet,
+  View,
+  ViewStyle,
+} from "react-native";
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
 export interface ModalProps extends Partial<RNModalProps> {
   visible: boolean;
@@ -18,8 +19,9 @@ export interface ModalProps extends Partial<RNModalProps> {
   containerStyle?: ViewStyle;
   contentStyle?: ViewStyle;
   overlayStyle?: ViewStyle;
-  animationType?: 'none' | 'slide' | 'fade';
+  animationType?: "none" | "slide" | "fade";
   closeOnOverlayPress?: boolean;
+  imageModal?: ImageSourcePropType;
 }
 
 const componenteModal: React.FC<ModalProps> = ({
@@ -29,7 +31,7 @@ const componenteModal: React.FC<ModalProps> = ({
   containerStyle,
   contentStyle,
   overlayStyle,
-  animationType = 'fade',
+  animationType = "fade",
   closeOnOverlayPress = true,
   ...modalProps
 }) => {
@@ -49,9 +51,7 @@ const componenteModal: React.FC<ModalProps> = ({
           style={[styles.content, contentStyle]}
           onPress={(e) => e.stopPropagation()}
         >
-          <View style={[styles.container, containerStyle]}>
-            {children}
-          </View>
+          <View style={[styles.container, containerStyle]}>{children}</View>
         </Pressable>
       </Pressable>
     </RNModal>
@@ -61,17 +61,17 @@ const componenteModal: React.FC<ModalProps> = ({
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   content: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 20,
     padding: 24,
     width: width * 0.85,
     maxWidth: 400,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   container: {
-    alignContent: 'center',
-    alignItems: 'center',
+    alignContent: "center",
+    alignItems: "center",
   },
 });
 

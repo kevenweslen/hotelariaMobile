@@ -8,7 +8,7 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { global } from "./styles";
@@ -44,29 +44,25 @@ const AuthContainer = ({
             {!!iconReturn && (
               <TouchableOpacity onPress={() => router.back()}>
                 <Ionicons
-                  name={iconReturn}
+                  name={"arrow-back-outline"}
                   size={23}
                   color="#fff"
                   style={{
-                    marginLeft: width * 0.04,
+                    marginLeft: width * 0.05,
                     backgroundColor: "#4169E1",
                     borderRadius: 100,
-                    height: height * 0.03,
-                    width: width * 0.06,
+                    height: height * 0.04,
+                    width: width * 0.12,
+                    textAlign: "center",
+                    textAlignVertical:"center",
                   }}
                 />
               </TouchableOpacity>
             )}
             <View style={global.header}>
-                <FontAwesome6
-                  name={icon}
-                  size={23}
-                  color="#000"
-                  marginTop={10}
-                />
+              <FontAwesome6 name={icon} size={23} color="#000" marginTop={10} />
               {!!title && <Text style={global.title}>{title}</Text>}
               {!!subtitle}
-
 
               {!!subtitle && <Text style={global.subTitle}>{subtitle}</Text>}
             </View>

@@ -10,10 +10,10 @@ import {
 import AuthContainer from "../ui/AuthContainer";
 import DateSelector from "../ui/dateSelector";
 import InputSpin from "../ui/InputSpin";
+import ComponenteModal from "../ui/modal";
 import RoomCart from "../ui/roomCart";
 import { global } from "../ui/styles";
 import TextField from "../ui/textField";
-import componenteModal from "../ui/modal";
 
 const RenderHome = () => {
   const { width, height } = Dimensions.get("window"); //Utilizarei as dimensões
@@ -23,6 +23,7 @@ const RenderHome = () => {
   const [qntGuests, setQntGuestat] = useState<number>(1);
   const [calendar, setCalendar] = useState<"checkin" | "checkout" | null>(null);
   const closeCalendar = () => setCalendar(null);
+  const [isModalVisible, setIsModalVisible] = useState(false); // Estado para controlar a modal
 
   return (
     <AuthContainer>
@@ -130,13 +131,13 @@ const RenderHome = () => {
             maxGuests={6}
             minGuests={1}
             stepOption={1}
-            colorMax="#FFD700"
-            colorMin="#FFD700"
+            colorMax="rgb(10, 165, 85)"
+            colorMin="rgb(10, 165, 85)"
           />
           {/*input para adicionar quantidade de clientes*/}
         </View>
       </View>
-      
+
       <TouchableOpacity onPress={() => setIsModalVisible(true)}>
         <View
           style={{
@@ -144,9 +145,9 @@ const RenderHome = () => {
             shadowColor: "black",
             shadowOpacity: 2,
             alignItems: "center",
+            marginTop: 20, // Adicionei um espaçamento
           }}
         >
-          onPress={() => setIsModalVisible(true)
           <RoomCart
             image={require("../../../assets/image/quarto-solteiro.jpg")}
             label="Quarto Luxo"
@@ -157,9 +158,33 @@ const RenderHome = () => {
             }}
             icon={{ lib: "FontAwesome5", name: "bed" }}
           />
-
         </View>
       </TouchableOpacity>
+      <ComponenteModal
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+      >
+        {/* Conteúdo da modal aqui */}
+        <View style={{ height: height * 0.2, width: width * 0.2 }}>
+          image={require("../../../assets/image/quarto-solteiro.jpg")}
+        </View>
+        <View style={{borderColor:"#000", borderRadius: 15}}>
+          <Text style={global.textoDestacado}>Quarto delux supremo</Text>
+          <Text style={global.textoDestacado}>Solteiro</Text>
+          <Text style={global.textoDestacado}>250 a diaria</Text> 
+        </View>
+        <TouchableOpacity
+          style={{
+            marginTop: 20,
+            padding: 10,
+            backgroundColor: "rgb(10, 165, 85)",
+            borderRadius: 5,
+          }}
+          onPress={() => setIsModalVisible(false)}
+        >
+          <Text style={{ color: "white" }}>Fechar</Text>
+        </TouchableOpacity>
+      </ComponenteModal>
     </AuthContainer>
   );
 };

@@ -80,7 +80,7 @@ export const global = StyleSheet.create({
   eyeIcon: {
     position: "absolute",
     right: 12,
-    top: 38,
+    top: 44,
   },
 
   primaryButton: {
@@ -101,5 +101,11 @@ export const global = StyleSheet.create({
   },
   primaryButtonText: {
     color: "#ffffff",
+  },
+  textoDestacado: {
+    color: "#000",
+    fontWeight: 700,
+    fontSize: 17,
+    flexDirection: "column",
   },
 });

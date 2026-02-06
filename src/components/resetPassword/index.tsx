@@ -8,33 +8,23 @@ import TextField from "../ui/textField";
 const RenderLogin = () => {
   const router = useRouter();
 
-  const { height } = Dimensions.get("window");
+  const { height, width } = Dimensions.get("window");
 
   return (
     <AuthContainer iconReturn="chevron-back" title="Atualize sua senha">
-      <View style={{alignItems: "center", justifyContent:"center"}}>
+      <View
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <TextField
           label="Email"
-          icon="Email"
+          icon={{ lib: "FontAwesome5", name: "envelope" }}
           placeholder="name@Email.com"
         ></TextField>
 
-        <PasswordField label="Senha" icon="lock" placeholder="*********" />
-
-        <View style={{ alignItems: "center" }}>
-          <TouchableOpacity onPress={() => router.push("/(auth)/register")}>
-            <Text
-              style={{
-                color: "#000",
-                fontWeight: 600,
-                fontSize: 14,
-                marginTop: height * 0.02,
-              }}
-            >
-              Cadastre-se aqui
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <PasswordField label="Senha" placeholder="*********" />
 
         <TouchableOpacity
           style={[global.primaryButton]}

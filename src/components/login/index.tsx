@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import AuthContainer from "../ui/AuthContainer";
 import PasswordField from "../ui/PasswordField";
@@ -12,7 +12,7 @@ function isValidEmail(email: string) {
 
 const RenderLogin = () => {
   const router = useRouter();
-  const { height } = Dimensions.get("window");
+  const { height, width } = Dimensions.get("window");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -45,11 +45,7 @@ const RenderLogin = () => {
           placeholder="name@Email.com"
         ></TextField>
 
-        <PasswordField
-          label="Senha"
-          icon={{ lib: "FontAwesome5", name: "lock" }}
-          placeholder="*********"
-        />
+        <PasswordField label="Senha" placeholder="*********" />
 
         <View style={{ alignItems: "center" }}>
           <TouchableOpacity
@@ -58,17 +54,11 @@ const RenderLogin = () => {
           >
             <Text style={global.primaryButtonText}>Entrar</Text>
           </TouchableOpacity>
+        </View>
 
+        <View style={{ flexDirection: "row", marginTop:30}}>
           <Text
-            style={{
-              color: "#000",
-              fontWeight: 600,
-              fontSize: 17,
-              marginTop: height * 0.02,
-              flexDirection: "row",
-              flexWrap: "wrap",
-            }}
-          >
+            style={global.textoDestacado}>
             Esqueceu sua senha?
           </Text>
 
@@ -80,25 +70,25 @@ const RenderLogin = () => {
                 color: "#004aaa",
                 fontWeight: 600,
                 fontSize: 17,
-                marginTop: height * 0.02,
-                flexDirection: "row",
-                flexWrap: "wrap",
+                marginLeft: width * 0.015,
               }}
             >
               Clique aqui.
             </Text>
           </TouchableOpacity>
-
+        </View>
+        <View style={{ flexDirection: "row" }}>
+          <Text style={global.textoDestacado}>Ainda não posui uma conta? cadastre-se</Text>
           <TouchableOpacity onPress={() => router.push("/(auth)/register")}>
             <Text
               style={{
-                color: "#000",
+                color: "#004aaa",
                 fontWeight: 600,
                 fontSize: 16,
-                marginTop: height * 0.01,
+                marginLeft: width * 0.015,
               }}
             >
-              Cadastre-se aqui
+              aqui
             </Text>
           </TouchableOpacity>
         </View>
