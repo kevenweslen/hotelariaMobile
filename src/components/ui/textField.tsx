@@ -19,6 +19,7 @@ type Props = TextInputProps & {
   mask?: MaskType;
   value?: string;
   onChangeText?: (text: string, rawText?: string) => void;
+  [key: string]: any;
 };
 
 const TextField = ({

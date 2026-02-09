@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import {
   Dimensions,
+  Image,
   ImageSourcePropType,
   Pressable,
   Modal as RNModal,
@@ -24,10 +25,11 @@ export interface ModalProps extends Partial<RNModalProps> {
   imageModal?: ImageSourcePropType;
 }
 
-const componenteModal: React.FC<ModalProps> = ({
+const CustomModal: React.FC<ModalProps> = ({
   visible,
   onClose,
   children,
+  imageModal,
   containerStyle,
   contentStyle,
   overlayStyle,
@@ -51,6 +53,13 @@ const componenteModal: React.FC<ModalProps> = ({
           style={[styles.content, contentStyle]}
           onPress={(e) => e.stopPropagation()}
         >
+          {imageModal && (
+            <Image
+              source={imageModal}
+              style={styles.modalImage}
+              resizeMode="contain"
+            />
+          )}
           <View style={[styles.container, containerStyle]}>{children}</View>
         </Pressable>
       </Pressable>
@@ -59,6 +68,12 @@ const componenteModal: React.FC<ModalProps> = ({
 };
 
 const styles = StyleSheet.create({
+  modalImage: {
+    width: 300,
+    height: 300,
+    marginBottom: 15,
+    alignSelf: "center",
+  },
   overlay: {
     flex: 1,
     justifyContent: "center",
@@ -78,7 +93,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
+    elevation: 10,
   },
   container: {
     alignContent: "center",
@@ -86,4 +101,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default componenteModal;
+export default CustomModal;

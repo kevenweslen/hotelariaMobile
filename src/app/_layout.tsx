@@ -1,10 +1,15 @@
 /*slot65489*/
-import { Slot } from "expo-router";
+import AuthProvider from "@/constexts/AuthContext";
+import { Slot, Stack } from "expo-router";
 
 const RootLayout = () => {
 
     return (
-        <Slot />
+        return(
+        <AuthProvider>
+            <Stack screenOptions={{ headerShown: false }}/>
+            
+        </AuthProvider>);
     );
 }
 export default RootLayout;
