@@ -1,3 +1,5 @@
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import AuthContainer from "../ui/AuthContainer";
@@ -9,6 +11,8 @@ const ProfileScreen = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const openModal = () => setIsModalVisible(true);
   const closeModal = () => setIsModalVisible(false);
+  const { signOut } = useAuth();
+  const router = useRouter();
 
   const [profile, setProfile] = useState({
     username: "",
@@ -86,6 +90,11 @@ const ProfileScreen = () => {
     console.log("Dados para salvar:", dataToSave);
   };
 
+  const logout = async () => {
+    await signOut();
+    router.replace("/(auth)");
+  };
+
   return (
     <AuthContainer title="Perfil">
       <View
@@ -139,7 +148,7 @@ const ProfileScreen = () => {
           returnKeyType="done"
         />
 
-        <View style={{ flexDirection: "row", gap: 5, marginBottom: 30}}>
+        <View style={{ flexDirection: "row", gap: 5, marginBottom: 30 }}>
           <TouchableOpacity
             onPress={handleSaveProfile}
             style={{
@@ -187,9 +196,9 @@ const ProfileScreen = () => {
               textAlign: "center",
             }}
           >
-            <PasswordField label="Senha antiga" placeholder="123"/>
+            <PasswordField label="Senha antiga" placeholder="123" />
 
-            <PasswordField label="Senha nova" placeholder="1234"/>
+            <PasswordField label="Senha nova" placeholder="1234" />
             <PasswordField
               label="Confirme seua nova senha"
               placeholder="1234"
@@ -231,6 +240,21 @@ const ProfileScreen = () => {
           {/* conteúdo da modal */}
         </ScrollView>
       </ComponenteModal>
+
+      <View style={{ alignItems: "center", marginTop: 20 }}>
+        <TouchableOpacity
+          style={{
+            backgroundColor: "rgb(236, 74, 74)",
+            padding: 15,
+            borderRadius: 8,
+            alignItems: "center",
+            width: "80%",
+          }}
+          onPress={logout}
+        >
+          <Text style={{ fontWeight: "bold", fontSize: 16 }}>Sair da conta</Text>
+        </TouchableOpacity>
+      </View>
     </AuthContainer>
   );
 };

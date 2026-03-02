@@ -1,18 +1,19 @@
+import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "expo-router";
-import { useMemo, useState } from "react";
-import { Dimensions, Text, TouchableOpacity, View } from "react-native";
+import React, { useMemo, useState } from "react";
+import { Alert, Dimensions, Text, TouchableOpacity, View } from "react-native";
 import AuthContainer from "../ui/AuthContainer";
 import PasswordField from "../ui/PasswordField";
-import { global } from "../ui/styles";
 import TextField from "../ui/textField";
+import { global } from "../ui/styles";
 
 function isValidEmail(email: string) {
   return /^[^\s@&='"!]+@[^\s@&='"!]+\.[^\s@&='"!]+$/.test(email);
 }
 
 const RenderLogin = () => {
+  const { signIn } = useAuth();
   const router = useRouter();
-  const { height, width } = Dimensions.get("window");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -22,16 +23,40 @@ const RenderLogin = () => {
   }>({});
 
   const errors = useMemo(() => {
-    const errors: Record<string, string> = {};
-    if (touched.email && !email) errors.email = "O e-mail é obrigatório.";
-    if (touched.password && !password)
-      errors.password = "A senha é obrigatória.";
-    if (touched.password && password.length < 6)
-      errors.password = "A senha deve ter no mínimo 6 caracteres.";
+    const error: Record<string, string> = {};
+    if (touched.email && !email) error.email = "E-mail obrigatório";
+    if (touched.password && !password) error.password = "Senha obrigatória";
+    if (touched.password && password && password.length < 6)
+      error.password = "No mínimo 6 caracteres para a senha";
     if (touched.email && email && !isValidEmail(email))
-      errors.email = "O e-mail é inválido, Digite um e-mail válido.";
-    return errors;
+      error.email = "Digite um e-mail válido";
+    return error;
   }, [email, password, touched]);
+
+  const canSubmit =
+    email && password && Object.keys(errors).length === 0 && !loading;
+
+  const handleSubmit = async () => {
+    
+    if (!canSubmit) {
+      Alert.alert("Erro", "Preencha todos os campos corretamente");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await signIn(email.trim(), password);
+      Alert.alert("Login bem-sucedido!");
+      router.replace("/(tabs)/home");
+    } catch (erro: any) {
+      Alert.alert("Erro", erro?.message || "Falha ao tentar logar!");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const { width, height } = Dimensions.get("window");
+  
   return (
     <AuthContainer
       title="Bem vindo"
@@ -39,26 +64,46 @@ const RenderLogin = () => {
       icon="hotel"
     >
       <View style={global.content}>
+        {/* ✅ CORRIGIDO: Adicionando value, onChangeText e onBlur */}
         <TextField
           label="Email"
           icon={{ lib: "MaterialIcons", name: "email" }}
           placeholder="name@Email.com"
-        ></TextField>
+          value={email}
+          onChangeText={setEmail}
+          onBlur={() => setTouched(prev => ({ ...prev, email: true }))}
+          error={touched.email ? errors.email : undefined}
+          autoCapitalize="none"
+          keyboardType="email-address"
+        />
 
-        <PasswordField label="Senha" placeholder="*********" />
-
+        {/* ✅ CORRIGIDO: Adicionando value, onChangeText e onBlur */}
+        <PasswordField 
+          label="Senha" 
+          placeholder="*********"
+          value={password}
+          onChangeText={setPassword}
+          onBlur={() => setTouched(prev => ({ ...prev, password: true }))}
+          error={touched.password ? errors.password : undefined}
+        />
+        
         <View style={{ alignItems: "center" }}>
           <TouchableOpacity
-            style={[global.primaryButton]}
-            onPress={() => router.replace("/(tabs)/home")}
+            style={[
+              global.primaryButton,
+              !canSubmit && { opacity: 0.5 } // Efeito visual quando desabilitado
+            ]}
+            onPress={handleSubmit}
+            disabled={!canSubmit || loading}
           >
-            <Text style={global.primaryButtonText}>Entrar</Text>
+            <Text style={global.primaryButtonText}>
+              {loading ? "Entrando..." : "Entrar"}
+            </Text>
           </TouchableOpacity>
         </View>
 
-        <View style={{ flexDirection: "row", marginTop:30}}>
-          <Text
-            style={global.textoDestacado}>
+        <View style={{ flexDirection: "row", marginTop: 30 }}>
+          <Text style={global.textoDestacado}>
             Esqueceu sua senha?
           </Text>
 
@@ -68,7 +113,7 @@ const RenderLogin = () => {
             <Text
               style={{
                 color: "#004aaa",
-                fontWeight: 600,
+                fontWeight: "600",
                 fontSize: 17,
                 marginLeft: width * 0.015,
               }}
@@ -77,18 +122,21 @@ const RenderLogin = () => {
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={{ flexDirection: "row" }}>
-          <Text style={global.textoDestacado}>Ainda não posui uma conta? cadastre-se</Text>
+        
+        <View style={{ flexDirection: "row", marginTop: 10 }}>
+          <Text style={global.textoDestacado}>
+            Ainda não possui uma conta? 
+          </Text>
           <TouchableOpacity onPress={() => router.push("/(auth)/register")}>
             <Text
               style={{
                 color: "#004aaa",
-                fontWeight: 600,
+                fontWeight: "600",
                 fontSize: 16,
                 marginLeft: width * 0.015,
               }}
             >
-              aqui
+              cadastre-se aqui
             </Text>
           </TouchableOpacity>
         </View>
@@ -96,4 +144,5 @@ const RenderLogin = () => {
     </AuthContainer>
   );
 };
+
 export default RenderLogin;
